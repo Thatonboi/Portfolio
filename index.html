@@ -17,56 +17,57 @@
     <div class="bg-grain"></div>
   </div>
 
-  <!-- Dynamic-Island style status pill -->
-  <div class="island" id="island">
-    <span class="island-dot"></span>
-    <span class="island-label" id="islandLabel">Home</span>
-  </div>
+  <!-- ============================== TOP NAV ============================== -->
+  <header class="topnav">
+    <button class="brand" data-nav="home" id="brandBtn" aria-label="Home">JB</button>
+    <nav class="topnav-links glass" aria-label="Primary">
+      <button class="topnav-link" data-nav="home">Home</button>
+      <button class="topnav-link" data-nav="portfolio">Portfolio</button>
+      <button class="topnav-link topnav-link-cta" data-open="contact">Contact</button>
+    </nav>
+  </header>
 
   <!-- ============================= HOME SCREEN ============================= -->
   <main class="screen" id="screen-home" data-screen="home">
     <div class="screen-scroll">
 
-      <!-- Hero / profile -->
-      <section class="hero glass" id="hero">
-        <div class="hero-avatar-wrap">
-          <img class="hero-avatar" id="avatarImg" src="profile.svg" alt="Portrait">
-        </div>
-        <h1 class="hero-name" id="personName">Jordan Blake</h1>
-        <p class="hero-title" id="personTitle">Software Engineer</p>
-        <p class="hero-tagline" id="personTagline">—</p>
+      <!-- Hero / About split -->
+      <section class="hero-split" id="hero">
+        <div class="hero-split-text">
+          <p class="eyebrow" id="personEyebrow">—</p>
+          <h1 class="hero-headline" id="personHeadline">—</h1>
+          <p class="hero-bio" id="aboutText">—</p>
 
-        <div class="hero-actions">
-          <a class="btn btn-primary" id="resumeBtn" href="#" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v13m0 0-4-4m4 4 4-4M5 21h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Resume
-          </a>
-          <button class="btn btn-ghost" data-open="contact">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Contact
-          </button>
+          <div class="focus-list" id="focusList"></div>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" id="resumeBtn" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v13m0 0-4-4m4 4 4-4M5 21h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Resume
+            </a>
+            <div class="hero-socials" id="heroSocials"></div>
+          </div>
         </div>
 
-        <div class="hero-socials" id="heroSocials"></div>
-      </section>
-
-      <!-- About -->
-      <section class="panel glass" id="aboutPanel">
-        <h2 class="panel-title">About</h2>
-        <p class="about-text" id="aboutText">—</p>
-        <div class="about-meta" id="aboutMeta"></div>
+        <div class="hero-split-media">
+          <img class="hero-image" id="avatarImg" src="profile.svg" alt="Portrait">
+          <div class="hero-chip glass" id="availabilityChip">
+            <span class="hero-chip-dot"></span>
+            <span id="availabilityText">—</span>
+          </div>
+        </div>
       </section>
 
       <!-- Experience -->
-      <section class="panel glass" id="experiencePanel">
-        <h2 class="panel-title">Experience</h2>
+      <section class="section" id="experiencePanel">
+        <h2 class="section-title">Experience</h2>
         <div class="timeline" id="timeline"></div>
       </section>
 
       <!-- Projects preview -->
-      <section class="panel glass" id="projectsPreviewPanel">
-        <div class="panel-head-row">
-          <h2 class="panel-title">Projects</h2>
+      <section class="section" id="projectsPreviewPanel">
+        <div class="section-head-row">
+          <h2 class="section-title">Projects</h2>
           <button class="link-btn" data-nav="portfolio">
             See all
             <svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -88,22 +89,6 @@
       <div class="project-grid" id="projectsFullGrid"></div>
     </div>
   </main>
-
-  <!-- ============================== BOTTOM DOCK ============================== -->
-  <nav class="dock glass" id="dock" aria-label="Primary">
-    <button class="dock-btn" data-nav="home" aria-label="Home">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5 12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9a1 1 0 0 0 1 1h3v-6h4v6h3a1 1 0 0 0 1-1v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span>Home</span>
-    </button>
-    <button class="dock-btn" data-nav="portfolio" aria-label="Portfolio">
-      <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="3" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="13" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="13" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.8"/></svg>
-      <span>Portfolio</span>
-    </button>
-    <button class="dock-btn" data-open="contact" aria-label="Contact">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span>Contact</span>
-    </button>
-  </nav>
 
   <!-- ============================ PROJECT OVERLAY ============================ -->
   <div class="sheet-backdrop" id="projectBackdrop" hidden></div>

@@ -39,9 +39,9 @@
     const p = CONTENT.person;
 
     document.title = `${p.name} — ${p.title}`;
-    $("#personName").textContent = p.name;
-    $("#personTitle").textContent = p.title;
-    $("#personTagline").textContent = p.tagline;
+    $("#brandBtn").textContent = p.name.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase();
+    $("#personEyebrow").textContent = p.title;
+    $("#personHeadline").innerHTML = (p.headline || p.title).replace(/\n/g, "<br>");
     $("#aboutText").textContent = p.bio;
 
     const avatarImg = $("#avatarImg");
@@ -50,20 +50,16 @@
     avatarImg.onerror = () => { avatarImg.src = "profile.svg"; };
 
     $("#resumeBtn").href = p.resumeUrl || "#";
+    $("#availabilityText").textContent = p.availability || p.location || "";
 
-    // about meta chips: location, email, phone
-    const meta = $("#aboutMeta");
-    meta.innerHTML = "";
-    const chips = [
-      { icon: "pin", text: p.location },
-      { icon: "mail", text: p.email },
-      { icon: "phone", text: p.phone }
-    ].filter((c) => c.text);
-    chips.forEach((c) => {
-      const el = document.createElement("span");
-      el.className = "meta-chip";
-      el.innerHTML = `${iconSvg(c.icon)}<span>${c.text}</span>`;
-      meta.appendChild(el);
+    // focus areas — interactive underline list (mirrors the About reference layout)
+    const focusWrap = $("#focusList");
+    focusWrap.innerHTML = "";
+    (p.focusAreas || []).forEach((area) => {
+      const row = document.createElement("div");
+      row.className = "focus-item";
+      row.innerHTML = `<span>${area}</span>${iconSvg("external")}`;
+      focusWrap.appendChild(row);
     });
 
     // hero socials
@@ -95,8 +91,10 @@
       const item = document.createElement("div");
       item.className = "timeline-item";
       item.innerHTML = `
-        <div class="timeline-period">${job.period}</div>
-        <div class="timeline-role">${job.role}</div>
+        <div class="timeline-head">
+          <span class="timeline-role">${job.role}</span>
+          <span class="timeline-period">${job.period}</span>
+        </div>
         <div class="timeline-company">${job.company}</div>
         <p class="timeline-desc">${job.description}</p>
         <div class="tag-row">${(job.tags || []).map((t) => `<span class="tag">${t}</span>`).join("")}</div>
@@ -236,16 +234,13 @@
   }
 
   /* ---------------------------------------------------------------------
-     SCREEN NAVIGATION (Home / Portfolio) + Dynamic Island label
+     SCREEN NAVIGATION (Home / Portfolio)
   --------------------------------------------------------------------- */
-  const SCREEN_LABELS = { home: "Home", portfolio: "Portfolio" };
-
   function goToScreen(name) {
     $$(".screen").forEach((s) => s.classList.toggle("active", s.dataset.screen === name));
-    $$(".dock-btn[data-nav]").forEach((b) => b.classList.toggle("active", b.dataset.nav === name));
-    $("#islandLabel").textContent = SCREEN_LABELS[name] || name;
-    $(`#screen-${name}`).closest(".screen-scroll") &&
-      ($(`#screen-${name} .screen-scroll`).scrollTop = 0);
+    $$(".topnav-link[data-nav]").forEach((b) => b.classList.toggle("active", b.dataset.nav === name));
+    const activeScroll = $(`#screen-${name} .screen-scroll`);
+    if (activeScroll) activeScroll.scrollTop = 0;
   }
 
   /* ---------------------------------------------------------------------

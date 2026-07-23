@@ -6,7 +6,7 @@
    values here and save. You never need to touch app.js, style.css, or
    index.html for a normal content update.
 
-   Images: point any "image" field at a file next to index.html. Sizes:
+   Images: point any "image" field at a file in /assets. Recommended sizes:
      - person.avatar        square, at least 500x500px  (jpg/png/webp)
      - project.cover        4:3 landscape, at least 1200x900px
      - project.gallery[]    same as cover, any number of images
@@ -22,11 +22,14 @@ const CONTENT = {
   person: {
     name: "Jordan Blake",
     title: "Software Engineer",
+    headline: "Building Reliable\nSoftware Systems",  // big two-line hero headline — use \n for a manual line break
     tagline: "I build fast, reliable products for the web — from backend systems to the pixels people touch.",
     location: "Miami, FL",
+    availability: "Available for new roles",   // shown on the small chip over the hero photo
     avatar: "profile.svg",     // replace with profile.jpg for a real photo
     bio: "I'm a software engineer who likes working across the whole stack — designing APIs, shaping data models, and polishing the interfaces people actually use. I care about performance, clean abstractions, and shipping things that hold up in production. Outside of work I contribute to a couple of open-source tools and spend too much time tuning my terminal setup.",
-    resumeUrl: "resume.pdf",   // add a resume.pdf file next to index.html and this will link to it
+    focusAreas: ["Backend Systems", "Distributed Infrastructure", "Developer Tooling", "Cloud Architecture"], // interactive list under the hero bio
+    resumeUrl: "resume.pdf",   // add a resume.pdf next to index.html and this will link to it
     email: "jordan@example.com",
     phone: "+1 (305) 555-0148",
     socials: [
